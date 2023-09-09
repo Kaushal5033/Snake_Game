@@ -1,13 +1,14 @@
 // Game constants and variables
 let inputDir = { x: 0, y: 0 };
 const foodsound = new Audio('music/foodsound.mp3');
-const gameoversound = new Audio('music/gameover mp3');
+const gameoversound = new Audio('music/gameover.mp3');
 const movesound = new Audio('music/move.mp3');
 const musicsound = new Audio('music/gamemusic.mp3');
 let speed = 11;
 let lastpainttime = 0;
 let snakeArr = [{ x: 13, y: 15 }];
 let food = { x: 10, y: 8 }; // Added "let" keyword
+let score = 0;
 
 // Game functions
 function main(ctime) {
@@ -19,7 +20,7 @@ function main(ctime) {
     gameengine();
 }
 
-function iscollide(snakeArr) {
+function iscollide(snake) {
     //If you bump into yourself
     for (let i = 1; i < snakeArr.length; i++) {
         if (snake[i].x === snake[0].x && snake[i].y === snake[0].y) {
@@ -28,9 +29,10 @@ function iscollide(snakeArr) {
         
     }
     // If you bump into the wall of the container
-    if (snake[0].x>=18||snake[0].x<=0 && snake[0].y>=18||snake[0].y<=0) {
+    if (snake[0].x>=18||snake[0].x<=0 || snake[0].y>=18||snake[0].y<=0) {
         return true ;
     }
+    return false;
 }
 
 function gameengine() {
@@ -48,6 +50,7 @@ function gameengine() {
     // If you have eaten food, then increment the score and add the food at a new place
     if (snakeArr[0].y === food.y && snakeArr[0].x === food.x) {
         foodsound.play();
+        score++;
         snakeArr.unshift({ x: snakeArr[0].x + inputDir.x, y: snakeArr[0].y + inputDir.y }); // Corrected syntax
         let a = 2;
         let b = 17;
