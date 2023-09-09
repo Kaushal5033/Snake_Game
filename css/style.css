@@ -14,26 +14,27 @@
 
 
 }
-.board{
+#board{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(54, 246, 185, 0.93);
+    background-color: rgba(73, 255, 164, 0.93);
     width: 160vh;
     height: 32vw;
-    border: 3px solid black;
+    border: 3px solid rgb(255, 255, 255);
     border-radius: 40px;
     margin-right: 200px;
     margin-top: 30px;
     display: grid;
-    grid-template-columns: repeat(40 , 1fr);
+    grid-template-columns: repeat(20 , 1fr);
     grid-template-rows: repeat(20 , 1fr);
 }
 .food{
-
+    background-color: rgb(255, 0, 0);
 }
 
 .snake{
 
-    
+    background-color: rgb(4, 0, 255);
+
 }
