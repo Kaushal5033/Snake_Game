@@ -29,7 +29,7 @@ function iscollide(snake) {
         
     }
     // If you bump into the wall of the container
-    if (snake[0].x>=18||snake[0].x<=0 || snake[0].y>=18||snake[0].y<=0) {
+    if (snake[0].x>=50||snake[0].x<=0 || snake[0].y>=18||snake[0].y<=0) {
         return true ;
     }
     return false;
@@ -50,9 +50,10 @@ function gameengine() {
     // If you have eaten food, then increment the score and add the food at a new place
     if (snakeArr[0].y === food.y && snakeArr[0].x === food.x) {
         foodsound.play();
-        score++;
+        score += 5;
+        scoreBox.innerHTML = "Score: " + score;
         snakeArr.unshift({ x: snakeArr[0].x + inputDir.x, y: snakeArr[0].y + inputDir.y }); // Corrected syntax
-        let a = 2;
+        let a = 1;
         let b = 17;
         food = { x: Math.round(a + (b - a) * Math.random()), y: Math.round(a + (b - a) * Math.random()) }; // Added "y" coordinate
     }
@@ -89,6 +90,7 @@ function gameengine() {
     foodElement.classList.add('food');
     board.appendChild(foodElement);
 }
+
 
 // Main logic of the game starts here
 window.requestAnimationFrame(main);
